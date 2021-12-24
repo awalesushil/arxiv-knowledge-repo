@@ -1,5 +1,14 @@
 # arxiv-knowledge-repo
 
+## Creating a sample subset
+
+To extract only the `cs.AI` papers from the [metadata dataset on kaggle](https://www.kaggle.com/Cornell-University/arxiv) we can pipe the file through `jq`
+```sh
+jq '. | select(.categories | contains("cs.AI")) | . ' arxiv-metadata-oai-snapshot.json > arxiv-sample.json
+# get just the first 100 records
+jq -s '.[:100]' arxiv-sample.json > arxiv-sample-cs-ai.json
+```
+
 ## Running the elastic stack locally
 
 The application requires an available elasticsearch and kibana. An easy way to provision this is to use `docker` with `docker-compose` with the provided `docker-compose.yml`. To get started
