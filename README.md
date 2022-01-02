@@ -4,9 +4,14 @@
 
 To extract only the `cs.AI` papers from the [metadata dataset on kaggle](https://www.kaggle.com/Cornell-University/arxiv) we can pipe the file through `jq`
 ```sh
-jq '. | select(.categories | contains("cs.AI")) | . ' arxiv-metadata-oai-snapshot.json > arxiv-sample.json
+# get all the papers from Computer Science
+jq '. | select(.categories | test("cs.(AI|AL|CC|CE|CG|GT|CV|CY|CR|DB|DB|DL|DM|DC|ET|FL|GL|AR|HC|IR|IT|LO|LG|MS|MA|MM|NI|NE|NA|OS|OH|PF|PL|RO|SI|SE|SD|SC|SY)")) | .' arxiv-metadata-oai-snapshot.json > arxiv-sample.json
+
+# filter the papers by year of first publishing
+jq 'select(.versions[]| select(.version | test("v1$")) .created | test("2010|2011|2012|2013|2014|2015|2016|2017|2018|2019|2020|2021")) ' arxiv-sample.json > arxiv-sample-by-date.json
+
 # get just the first 100 records
-jq -s '.[:100]' arxiv-sample.json > arxiv-sample-cs-ai.json
+jq -s '.[:100]' arxiv-sample-by-date.json > arxiv-sample-cs.json
 ```
 
 ## Running the elastic stack locally
