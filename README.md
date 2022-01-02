@@ -2,7 +2,7 @@
 
 ## Creating a sample subset
 
-To extract only the `cs.AI` papers from the [metadata dataset on kaggle](https://www.kaggle.com/Cornell-University/arxiv) we can pipe the file through `jq`
+To extract only the `cs` papers from the [metadata dataset on kaggle](https://www.kaggle.com/Cornell-University/arxiv) we can pipe the file through `jq`
 ```sh
 # get all the papers from Computer Science
 jq '. | select(.categories | test("cs.(AI|AL|CC|CE|CG|GT|CV|CY|CR|DB|DB|DL|DM|DC|ET|FL|GL|AR|HC|IR|IT|LO|LG|MS|MA|MM|NI|NE|NA|OS|OH|PF|PL|RO|SI|SE|SD|SC|SY)")) | .' arxiv-metadata-oai-snapshot.json > arxiv-sample.json
