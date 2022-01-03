@@ -38,7 +38,7 @@ ip         heap.percent ram.percent cpu load_1m load_5m load_15m node.role   mas
 5. Now the elasticsearch API should be available via `http://localhost:9200/` and the kibana interface should be reachable via `http://localhost:5601/`
 
 
-# Building Knowledge Repo
+## Building Knowledge Repo and Loading data
 
 Run `main.py` with the required arguments.
 
@@ -47,4 +47,8 @@ Run `main.py` with the required arguments.
 -i index_name            to create new index
 -s schemapath            path to schema definition file
 -d datapath              path to data file
+-p port                  server port number (default -9200)
 ```
+
+*Example*
+`python3 main.py -i arxiv3 -s meta/schema.json -d data/arxiv-sample-cs-ai.json`
