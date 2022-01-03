@@ -1,0 +1,80 @@
+{
+    "settings": {
+        "number_of_shards": 5,
+        "number_of_replicas": 1,
+        "index": {
+            "analysis": {
+                "analyzer": {
+                    "custom_analyzer": {
+                        "type": "custom",
+                        "tokenizer": "standard",
+                        "filter": [
+                            "lowercase",
+                            "custom_stopwords"
+                        ]
+                    }
+                },
+                "filter": {
+                    "custom_stopwords": {
+                        "type": "stop",
+                        "stopwords": "_english_"
+                    }
+                }
+            }
+        }
+    },
+    "mappings": {
+        "dynamic": false,
+        "properties": {
+            "pid": {
+                "type": "text"
+            },
+            "title": {
+                "type": "text"
+            },
+            "journal-ref": {
+                "type": "text"
+            },
+            "doi": {
+                "type": "text"
+            },
+            "authors": {
+                "type": "nested",
+                "properties": {
+                    "fname": {
+                        "type": "text"
+                    },
+                    "lname":{
+                        "type": "text"
+                    },
+                    "affiliation": {
+                        "type": "text"
+                    }
+                }
+            },
+            "categories": {
+                "type": "text"
+            },
+            "license": {
+                "type": "text"
+            },
+            "abstract": {
+                "type": "text"
+            },
+            "date": {
+                "type": "nested",
+                "properties": {
+                    "year": {
+                        "type": "numbers"
+                    },
+                    "month":{
+                        "type": "numbers"
+                    },
+                    "day": {
+                        "type": "numbers"
+                    }
+                }
+            }
+        }
+    }
+}
