@@ -31,3 +31,15 @@ ip         heap.percent ram.percent cpu load_1m load_5m load_15m node.role   mas
 172.18.0.3           50          96  10    1.81    2.27     2.38 cdfhilmrstw -      es02
 ```
 5. Now the elasticsearch API should be available via `http://localhost:9200/` and the kibana interface should be reachable via `http://localhost:5601/`
+
+
+# Building Knowledge Repo
+
+Run `main.py` with the required arguments.
+
+```
+-h                       for help
+-i index_name            to create new index
+-s schemapath            path to schema definition file
+-d datapath              path to data file
+```
