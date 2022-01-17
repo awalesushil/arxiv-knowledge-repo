@@ -1,3 +1,4 @@
 certifi==2021.10.8
 elasticsearch==7.16.2
 urllib3==1.26.7
+elara==0.5.4
