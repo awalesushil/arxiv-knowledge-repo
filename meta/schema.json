@@ -30,7 +30,8 @@
                 "type": "text"
             },
             "title": {
-                "type": "text"
+                "type": "text",
+                "analyzer": "custom_analyzer"
             },
             "journal-ref": {
                 "type": "text"
@@ -47,6 +48,9 @@
                     "lname":{
                         "type": "text"
                     },
+                    "full_name": {
+                        "type": "text"
+                    },
                     "affiliation": {
                         "type": "text"
                     }
@@ -59,19 +63,23 @@
                 "type": "text"
             },
             "abstract": {
-                "type": "text"
+                "type": "text",
+                "analyzer": "custom_analyzer"
             },
             "date": {
+                "type": "date"
+            },
+            "date_parsed": {
                 "type": "nested",
                 "properties": {
                     "year": {
-                        "type": "numbers"
+                        "type": "text"
                     },
-                    "month":{
-                        "type": "numbers"
+                    "month": {
+                        "type": "text"
                     },
                     "day": {
-                        "type": "numbers"
+                        "type": "text"
                     }
                 }
             }

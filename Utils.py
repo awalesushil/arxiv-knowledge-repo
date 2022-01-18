@@ -26,13 +26,14 @@ class Utils:
             _authors.append({
                 "fname": author[1],
                 "lname": author[0],
+                "full_name": author[1] + " " + author[0],
                 "affiliation": author[2]
             })
         return _authors
 
     def __date_parser__(self, d):
         d = datetime.strptime(d, "%a, %d %b %Y %H:%M:%S %Z").date()
-        return {"year": d.year, "month": d.month, "day": d.day}
+        return d, {"year": d.year, "month": d.month, "day": d.day}
 
     def wrap_in_json(self, datapath):
         '''
@@ -54,7 +55,8 @@ class Utils:
                 "categories": [c for c in doc['categories'].split(" ")],
                 "license": doc["license"],
                 "abstract": self.__clean(doc["abstract"]),
-                "date": self.__date_parser__(doc["versions"][0]["created"])
+                "date": self.__date_parser__(doc["versions"][0]["created"])[0],
+                "date_parsed": self.__date_parser__(doc["versions"][0]["created"])[1]
             }
 
             json.dump({"index": {"_id": i}}, wf)
