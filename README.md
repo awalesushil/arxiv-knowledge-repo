@@ -50,5 +50,6 @@ Run `main.py` with the required arguments.
 -p port                  server port number (default -9200)
 ```
 
-*Example*
-`python3 main.py -i arxiv3 -s meta/schema.json -d data/arxiv-sample-cs-ai.json`
+*Run the following command to create an index 'arxiv' and load the data*
+
+`python3 main.py -i arxiv -s meta/schema.json -d data/arxiv-sample-cs-ai.json`
