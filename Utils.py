@@ -33,7 +33,8 @@ class Utils:
 
     def __date_parser__(self, d):
         d = datetime.strptime(d, "%a, %d %b %Y %H:%M:%S %Z").date()
-        return d, {"year": d.year, "month": d.month, "day": d.day}
+        date = d.year + "-" + d.month + "-" + d.day
+        return date, {"year": d.year, "month": d.month, "day": d.day}
 
     def wrap_in_json(self, datapath):
         '''
