@@ -33,20 +33,19 @@ class Utils:
 
     def __date_parser__(self, d):
         d = datetime.strptime(d, "%a, %d %b %Y %H:%M:%S %Z").date()
-        date = d.year + "-" + d.month + "-" + d.day
-        return date, {"year": d.year, "month": d.month, "day": d.day}
+        return d.isoformat(), {"year": d.year, "month": d.month, "day": d.day}
 
     def wrap_in_json(self, datapath):
         '''
             Wrap data in JSON format ready to be ingested into an index
             @params
-                datapath:   path to data 
+                datapath:   path to data
         '''
         data = json.load(open(datapath, "r"))
         wf = open("data/data.json","w+")
 
         for i, doc in enumerate(data):
-            
+
             obj = {
                 "pid": doc["id"],
                 "title": self.__clean(doc["title"]),
@@ -75,5 +74,5 @@ class Utils:
 
         with open(datapath, encoding='utf-8', errors='ignore') as f:
             data = f.readlines()
-        
+
         server.load(data)
