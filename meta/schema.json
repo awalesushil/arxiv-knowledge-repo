@@ -27,17 +27,17 @@
         "dynamic": false,
         "properties": {
             "pid": {
-                "type": "text"
+                "type": "keyword"
             },
             "title": {
                 "type": "text",
                 "analyzer": "custom_analyzer"
             },
             "journal-ref": {
-                "type": "text"
+                "type": "keyword"
             },
             "doi": {
-                "type": "text"
+                "type": "keyword"
             },
             "authors": {
                 "type": "nested",
@@ -57,7 +57,7 @@
                 }
             },
             "categories": {
-                "type": "text"
+                "type": "keyword"
             },
             "license": {
                 "type": "text"
@@ -73,13 +73,13 @@
                 "type": "nested",
                 "properties": {
                     "year": {
-                        "type": "text"
+                        "type": "number"
                     },
                     "month": {
-                        "type": "text"
+                        "type": "number"
                     },
                     "day": {
-                        "type": "text"
+                        "type": "number"
                     }
                 }
             }
