@@ -52,4 +52,13 @@ Run `main.py` with the required arguments.
 
 *Run the following command to create an index 'arxiv' and load the data*
 
-`python3 main.py -i arxiv -s meta/schema.json -d data/arxiv-sample-cs-ai.json`
+`python3 main.py -i arxiv -s meta/schema.json -d data/arxiv-sample-cs.json`
+
+## Quantitative Evaluation
+
+```sh
+# Evaluate the total time taken to ingest json document
+time -p python3 main.py -i test -s meta/schema.json -d data/arxiv-sample-cs.json
+# Evaluate the total time taken to run queries on kibana dashboard
+time -p bash query_time.sh
+```
